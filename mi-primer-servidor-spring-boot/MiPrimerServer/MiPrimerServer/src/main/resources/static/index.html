@@ -8,6 +8,15 @@
         <meta name="author" content="Nahomi Figueroa">
         <meta name="robots" content="index,follow">
         <title>Mi primer servidor web</title>
+        <style>
+            *{
+                font-family: "Century Gothic", "MS Gothic" ;
+            }
+            #sobre-mi{
+                border: 1px solid mediumpurple;
+            }
+        </style>
+       <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
@@ -31,7 +40,7 @@
         </article>
         <section id="sobre-mi">
             <h2>Sobre mi</h2>
-            <p id=desc"" name="desc">Hola! Soy <strong>Nahomi Figueroa</strong>, tecnico en programación y  estudiante de ingenieria en software en ITSON, actualmente cursando mi 5to semestre. Enfocada en el desarrollo fullstack.</p>
+            <p id=desc"" class="desc">Hola! Soy <strong>Nahomi Figueroa</strong>, tecnico en programación y  estudiante de ingenieria en software en ITSON, actualmente cursando mi 5to semestre. Enfocada en el desarrollo fullstack.</p>
             <img src="imgs/imagenyo.jpg" alt="Foto de perfil de Nahomi Figueroa" width="300px" height="auto">
         </section>
         <section id="habilidades">
@@ -82,13 +91,13 @@
         </section>
         <section id="proyectos">
             <h2>Proyectos</h2>
-            <table>
+            <table class="tabla-bonita">
                 <thead>Experiencia acedemica, laboral y voluntariado</thead>
                 <tr>
-                    <td>Nombre</td>
-                    <td>Descripción</td>
-                    <td>Tipo de experiencia</td>
-                    <td>Fecha</td>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Tipo de experiencia</th>
+                    <th>Fecha</th>
                 </tr>
                 <tr>
                     <td>Artes37</td>

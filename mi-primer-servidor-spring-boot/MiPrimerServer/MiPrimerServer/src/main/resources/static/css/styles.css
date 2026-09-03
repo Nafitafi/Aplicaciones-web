@@ -1,0 +1,43 @@
+*{
+    font-family: "Century Gothic", "MS Gothic";
+}
+body{
+    background-color: #d0d0fa;
+    color: #807b87;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    color: #6e538a;
+}
+
+#formacion{
+    background-color: #D8BFD8;
+    padding: 20px 10px 15px 5px;
+    margin: 20px 10px 15px 5px;
+    border-radius: 20px;
+}
+
+#sobre-mi, #habilidades, #proyectos, #contacto{
+    background-color: #C8D8C4;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+}
+
+.desc{
+    background-color: #e3cae3;
+    padding: 15px;
+    border-left: 4px solid #e1b38b;
+}
+.tabla-bonita th, .tabla-bonita td{
+    border: 1px solid #5c3d8a;
+    text-align: center;
+}
+.tabla-bonita th {
+    background-color: #5c3d8a;
+    color: #d0d0fa;
+}
