@@ -1,3 +1,9 @@
+:root{
+    --primary-color: #eeeeda;
+    --secondary-color: #6e538a;
+    --text-color: ;
+}
+
 * {
     font-family: "Century Gothic", "MS Gothic", sans-serif;
     box-sizing: border-box;
@@ -9,6 +15,20 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    /*
+        Como dato de unidades
+        px: Uniidad de medida absopluta
+        %: Relativo al contenedor padre
+        vw: Relativo al ancho total de la pantalla del navegador
+        vh: Relativo a la altura total de la pantalla del navegador
+        dvh: Dynamic viewport height Relativo al tamaño de la fuente raíz (Respeta el alto que tiene el dispositivo en los mobiles como las camaras y asi)
+        em: Relativo a la fuente del dispositivo
+        fr: Es una fracción de un grid
+        rem: Relativo a la fuente del dispositivo y a su tamaño (Del conteenedor)
+     */
 }
 
 body > h1,
@@ -30,6 +50,7 @@ header {
     margin: 25px;
     padding: 20px;
     box-shadow: 6px 6px 0px #6e538a;
+    text-align: center;
 }
 
 header h1 {
@@ -42,7 +63,10 @@ header p {
 }
 
 nav {
+    display: flex;
+    justify-content: center;
     margin-top: 15px;
+    gap: 15px;
 }
 
 nav a {
@@ -50,11 +74,26 @@ nav a {
     text-decoration: none;
     font-weight: bold;
     margin-right: 15px;
+    transition: background-color 0.3s ease;
 }
 
 nav a:hover {
     background-color: #d8bfd8;
     padding: 4px;
+    border-radius: 5px;
+}
+.foto-perfil{
+    float: right;
+    margin: 15px;
+    border-radius: 50%;
+}
+main{
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: var(--spacing);
+    padding: var(--spacing);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /*Secciones por ID*/
@@ -65,6 +104,14 @@ nav a:hover {
 #proyectos,
 #contacto,
 #hobbies {
+    background-color: #f8f6e8;
+    padding: 20px;
+    margin: 25px;
+    border: 3px solid #302238;
+    box-shadow: 6px 6px 0px #9b7bb5;
+}
+
+section{
     background-color: #f8f6e8;
     padding: 20px;
     margin: 25px;
