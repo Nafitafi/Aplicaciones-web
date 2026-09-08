@@ -220,4 +220,13 @@ footer a:hover {
     :focus = enlace ya visitado
     :checked = radio o check marcado
     :disable = elemento deshabilitado
+
+    :first-child = primer hijo del elemento
+    :last-child = ultimo hijo/elemento
+    :nth-child(n) por patrón numérico
+
+    pseudo-elementos
+    ::before; Inyecta el contenido antes
+    ::after; Inyecta copntenido después
+    ::first-letter
  */
