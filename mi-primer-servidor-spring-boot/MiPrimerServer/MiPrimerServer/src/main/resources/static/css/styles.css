@@ -212,3 +212,12 @@ footer a {
 footer a:hover {
     color: white;
 }
+
+/**
+    Pseudo classes
+    :hover = Mouse encima
+    :active = Cuando se presiona un click
+    :focus = enlace ya visitado
+    :checked = radio o check marcado
+    :disable = elemento deshabilitado
+ */
