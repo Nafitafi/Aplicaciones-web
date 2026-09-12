@@ -1,102 +1,166 @@
-:root{
-    --primary-color: #eeeeda;
-    --secondary-color: #6e538a;
-    --text-color: ;
+/*
+Variables locales
+ */
+
+:root {
+
+    --fondo: #eeeeda;
+    --fondo-seccion: #f8f6e8;
+    --blanco: #ffffff;
+
+    --principal: #4d3563;
+    --secundario: #6e538a;
+    --oscuro: #302238;
+    --texto: #33283d;
+
+    --lavanda: #d8bfd8;
+    --lavanda-claro: #e3d5e8;
+    --tabla: #eee5f0;
+
+    /* Bordes y sombras */
+    --grosor-borde: 3px;
+    --grosor-borde-grueso: 4px;
+    --sombra: 6px 6px 0px var(--secundario);
+    --sombra-tarjeta: 5px 5px 0px var(--secundario);
+
+    /* Espaciado */
+    --espacio-xs: 5px;
+    --espacio-s: 10px;
+    --espacio-m: 20px;
+    --espacio-l: 25px;
+    --espacio-xl: 30px;
+
+    --spacing: var(--espacio-m);
+
+    /* Otros */
+    --radio: 5px;
+    --transicion: 0.3s ease;
 }
 
+/*
+General
+ */
 * {
     font-family: "Century Gothic", "MS Gothic", sans-serif;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: #eeeeda;
-    color: #33283d;
+    background-color: var(--fondo);
+    color: var(--texto);
     line-height: 1.6;
+
     margin: 0;
     padding: 0;
     display: grid;
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
-    /*
-        Como dato de unidades
-        px: Uniidad de medida absopluta
-        %: Relativo al contenedor padre
-        vw: Relativo al ancho total de la pantalla del navegador
-        vh: Relativo a la altura total de la pantalla del navegador
-        dvh: Dynamic viewport height Relativo al tamaño de la fuente raíz (Respeta el alto que tiene el dispositivo en los mobiles como las camaras y asi)
-        em: Relativo a la fuente del dispositivo
-        fr: Es una fracción de un grid
-        rem: Relativo a la fuente del dispositivo y a su tamaño (Del conteenedor)
-     */
 }
 
+/* Body*/
 body > h1,
 body > p,
 body > ul {
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: var(--espacio-l);
+    margin-right: var(--espacio-l);
 }
 
 body > h1 {
-    margin-top: 30px;
+    margin-top: var(--espacio-xl);
 }
 
-/* Header */
+
+/*Header*/
 
 header {
-    background-color: #ffffff;
-    border: 4px solid #302238;
-    margin: 25px;
-    padding: 20px;
-    box-shadow: 6px 6px 0px #6e538a;
+    background-color: var(--blanco);
+    border: var(--grosor-borde-grueso) solid var(--oscuro);
+    margin: var(--espacio-l);
+    padding: var(--espacio-m);
+    box-shadow: var(--sombra);
     text-align: center;
 }
 
 header h1 {
-    color: #4d3563;
+    color: var(--principal);
     margin-top: 0;
 }
 
 header p {
-    color: #6e538a;
+    color: var(--secundario);
 }
 
+
+/*Menú de navegación*/
 nav {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     margin-top: 15px;
-    gap: 15px;
+    gap: var(--espacio-s);
 }
 
 nav a {
-    color: #4d3563;
+    color: var(--principal);
     text-decoration: none;
     font-weight: bold;
-    margin-right: 15px;
-    transition: background-color 0.3s ease;
+    padding: 4px 8px;
+    transition:
+            background-color var(--transicion),
+            color var(--transicion),
+            transform var(--transicion),
+            box-shadow var(--transicion);
 }
 
 nav a:hover {
-    background-color: #d8bfd8;
-    padding: 4px;
-    border-radius: 5px;
+    background-color: var(--lavanda);
+    border-radius: var(--radio);
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0 var(--secundario);
 }
-.foto-perfil{
-    float: right;
-    margin: 15px;
-    border-radius: 50%;
+
+nav a:focus {
+    outline: 3px dashed var(--secundario);
+    outline-offset: 3px;
 }
-main{
+
+nav a:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+/* Main */
+main {
     display: grid;
-    grid-template-rows: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--spacing);
     padding: var(--spacing);
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/*Secciones por ID*/
+
+/* Secciones */
+section {
+    background-color: var(--fondo-seccion);
+    padding: var(--espacio-m);
+    margin: var(--espacio-l);
+    border: var(--grosor-borde) solid var(--oscuro);
+    box-shadow: var(--sombra);
+    /*
+        Transición utilizada junto con :hover
+        para crear el efecto de elevación bonis.
+    */
+    transition:
+            transform var(--transicion),
+            box-shadow var(--transicion);
+}
 
 #sobre-mi,
 #habilidades,
@@ -104,129 +168,249 @@ main{
 #proyectos,
 #contacto,
 #hobbies {
-    background-color: #f8f6e8;
-    padding: 20px;
-    margin: 25px;
-    border: 3px solid #302238;
-    box-shadow: 6px 6px 0px #9b7bb5;
+    background-color: var(--fondo-seccion);
+    padding: var(--espacio-m);
+    margin: var(--espacio-l);
+    border: var(--grosor-borde) solid var(--oscuro);
+    box-shadow: var(--sombra);
 }
 
-section{
-    background-color: #f8f6e8;
-    padding: 20px;
-    margin: 25px;
-    border: 3px solid #302238;
-    box-shadow: 6px 6px 0px #9b7bb5;
+section:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 9px 9px 0 var(--secundario);
 }
 
-#contacto{
-    text-align: center;
-}
-
-#contacto a{
-    color: #302238;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 0 10px;
-}
-
-#contacto a:hover{
-    color: #d8bfd8;
-}
 
 h2 {
-    color: #4d3563;
-    border-bottom: 3px solid #4d3563;
-    padding-bottom: 5px;
+    color: var(--principal);
+    border-bottom: var(--grosor-borde) solid var(--principal);
+    padding-bottom: var(--espacio-xs);
+}
+
+#sobre-mi {
+    overflow: auto;
+}
+
+.foto-perfil {
+    float: right;
+    width: 300px;
+    height: auto;
+    margin: 15px;
+    border-radius: 50%;
+    border: var(--grosor-borde-grueso) solid var(--oscuro);
+    transition:
+            transform var(--transicion),
+            box-shadow var(--transicion);
+}
+
+.foto-perfil:hover {
+    transform: rotate(2deg) scale(1.02);
+    box-shadow: 5px 5px 0 var(--secundario);
+}
+
+.desc {
+    background-color: var(--lavanda);
+    padding: 15px;
+    border-left: 5px solid var(--secundario);
+}
+
+#habilidades p {
+    margin-bottom: var(--espacio-s);
 }
 
 #formacion {
-    background-color: #e3d5e8;
+    background-color: var(--lavanda-claro);
 }
 
-/* Detallitos del about me */
-
-.desc {
-    background-color: #d8bfd8;
-    padding: 15px;
-    border-left: 5px solid #6e538a;
-}
-
-#sobre-mi img {
-    border: 4px solid #302238;
-    margin-top: 15px;
-}
-
-/* Listas */
-
+/*
+Listas
+ */
 li {
-    margin-bottom: 5px;
+    margin-bottom: var(--espacio-xs);
 }
 
 ul li::marker {
-    color: #6e538a;
+    color: var(--secundario);
 }
 
-/* Tabla bonita */
+#formacion li:first-child {
+    font-weight: bold;
+}
 
+#formacion li:last-child {
+    margin-bottom: var(--espacio-m);
+}
+
+/*
+   Cada segundo elemento recibe un pequeño detalle.
+*/
+#formacion li:nth-child(even) {
+    color: var(--principal);
+}
+
+
+/*
+Tabla
+*/
 .tabla-bonita {
     width: 100%;
     border-collapse: collapse;
-    background-color: #ffffff;
+    background-color: var(--blanco);
 }
 
 .tabla-bonita th,
 .tabla-bonita td {
-    border: 2px solid #4d3563;
-    padding: 10px;
+    border: 2px solid var(--principal);
+    padding: var(--espacio-s);
     text-align: center;
 }
 
 .tabla-bonita th {
-    background-color: #4d3563;
-    color: #eeeeda;
+    background-color: var(--principal);
+    color: var(--fondo);
 }
 
-.tabla-bonita tr:nth-child(even) {
-    background-color: #eee5f0;
+.tabla-bonita tbody tr:nth-child(even) {
+    background-color: var(--tabla);
 }
 
-/* Footer */
+.tabla-bonita tr:hover {
+    background-color: var(--lavanda);
+}
+
+#contacto {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#contacto a {
+    color: var(--oscuro);
+    text-decoration: none;
+    font-weight: bold;
+    margin: var(--espacio-xs) var(--espacio-s);
+    padding: var(--espacio-xs) var(--espacio-s);
+    transition:
+            color var(--transicion),
+            background-color var(--transicion),
+            transform var(--transicion);
+}
+
+
+#contacto a:hover {
+    color: var(--oscuro);
+    background-color: var(--lavanda);
+    transform: translateY(-2px);
+}
+
+#hobbies {
+    width: auto;
+}
+
+.lista-hobbies {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--espacio-m);
+    padding: 0;
+    margin: var(--espacio-l) 0;
+    list-style: none;
+}
+
+.tarjeta-hobby {
+    background-color: var(--blanco);
+    border: var(--grosor-borde) solid var(--oscuro);
+    box-shadow: var(--sombra-tarjeta);
+    padding: var(--espacio-m);
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-s);
+    transition:
+            transform var(--transicion),
+            box-shadow var(--transicion),
+            background-color var(--transicion);
+}
+
+.tarjeta-hobby:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0 var(--secundario);
+    background-color: var(--lavanda);
+}
+
+.tarjeta-hobby:nth-child(even) {
+    background-color: var(--lavanda-claro);
+}
+
+.tarjeta-hobby:nth-child(even):hover {
+    background-color: var(--lavanda);
+}
+
+.icono-hobby {
+    font-size: 2rem;
+    min-width: 45px;
+    text-align: center;
+}
+
+.tarjeta-hobby:first-child {
+    border-top: 5px solid var(--secundario);
+}
+.tarjeta-hobby:last-child {
+    border-bottom: 5px solid var(--secundario);
+}
+
+
+#hobbies a {
+    color: var(--principal);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid var(--secundario);
+    transition:
+            background-color var(--transicion),
+            color var(--transicion);
+}
+
+#hobbies a:hover {
+    background-color: var(--lavanda);
+    color: var(--oscuro);
+}
 
 footer {
-    background-color: #302238;
-    color: #eeeeda;
-    padding: 25px;
-    margin-top: 30px;
+    background-color: var(--oscuro);
+    color: var(--fondo);
+    padding: var(--espacio-l);
+    margin-top: var(--espacio-xl);
     text-align: center;
-    border-top: 6px solid #9b7bb5;
+    border-top: 6px solid var(--secundario);
+}
+
+footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espacio-s);
+    margin-top: var(--espacio-s);
 }
 
 footer a {
-    color: #d8bfd8;
+    color: var(--lavanda);
     text-decoration: none;
     font-weight: bold;
-    margin: 0 10px;
+    margin: 0 var(--espacio-s);
+    padding: var(--espacio-xs);
+    transition:
+            color var(--transicion),
+            background-color var(--transicion),
+            transform var(--transicion);
 }
 
 footer a:hover {
-    color: white;
+    color: var(--blanco);
+    background-color: var(--secundario);
+    transform: translateY(-2px);
 }
 
-/**
-    Pseudo classes
-    :hover = Mouse encima
-    :active = Cuando se presiona un click
-    :focus = enlace ya visitado
-    :checked = radio o check marcado
-    :disable = elemento deshabilitado
 
-    :first-child = primer hijo del elemento
-    :last-child = ultimo hijo/elemento
-    :nth-child(n) por patrón numérico
-
-    pseudo-elementos
-    ::before; Inyecta el contenido antes
-    ::after; Inyecta copntenido después
-    ::first-letter
- */
