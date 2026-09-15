@@ -53,7 +53,7 @@ public class UsuarioController {
         if (usuarioService.autenticar(correo, contrasenia)){
             return "redirect:/index";
         }
-        return "redirect/error";
+        return "redirect:/error";
     }
 
     @GetMapping("/cerrar-sesion")
