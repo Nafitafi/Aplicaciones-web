@@ -41,3 +41,76 @@ a {
 a:hover {
     color: var(--links-hover-dark);
 }
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #131200;
+}
+#menu-toggle{
+    display: none;
+}
+
+.menu-button{
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.menu-button span{
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--text-color-dark);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 25px;
+}
+nav a{
+    color: var(--text-color-dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav a:hover{
+    color: var(--highlight);
+}
+
+@media (width<=678) {
+    .menu-button{
+        display: flex;
+    }
+    nav ul{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(19, 18, 0, 0.98);
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 20px;
+        display: none;
+    }
+    #menu-toggle:checked ~ ul{
+        display: flex;
+    }
+    #menu-toggle:checked ~ .menu-button span:nth-child(1){
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+    #menu-toggle:checked ~ .menu-button span:nth-child(2){
+        opacity: 0;
+    }
+    #menu-toggle:checked ~ .menu-button span:nth-child(3){
+        transform: rotate(-45deg) translate(5px, 6px);
+    }
+}
