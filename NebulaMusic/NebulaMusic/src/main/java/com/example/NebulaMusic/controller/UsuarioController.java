@@ -16,12 +16,12 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    @GetMapping({"index.html", "index"})
+    @GetMapping({"/index.html", "/index"})
     public String index(){
         return "index";
     }
 
-    @GetMapping({"/", "/iniciar-sesion", "iniciar-sesion.html"})
+    @GetMapping({"/", "/iniciar-sesion", "/iniciar-sesion.html"})
     public String login(){
         return "iniciar-sesion";
     }

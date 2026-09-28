@@ -4,29 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nébula Music - Registro</title>
-    <link rel="stylesheet" href="../static/styles/styles.css">
+    <link rel="stylesheet" th:href="@{/styles/styles.css}">
 </head>
 <body>
 
     <main class="auth-container">
         <section class="auth-card">
             
-            <!-- TAREA PARA EL ALUMNO:
-                 Crea un formulario que envíe los datos mediante POST a "/crear-cuenta".
-                 Debe contener campos para:
-                 - Nombre completo (texto)
-                 - Correo electrónico (email)
-                 - Contraseña (password)
-                 - Pseudónimo (texto con patrón de validación: [letras de 3 a 10]-[números de 2 a 10])
-                 - Género (radio buttons: Femenino, Masculino, Otro)
-                 - Tipo de Suscripción (select: Gratis, Premium Mensual, Premium Anual)
-                 - Fecha de nacimiento (date)
-                 - Aceptar términos y condiciones (checkbox)
-                 - Comentarios adicionales o gustos (textarea)
-            -->
-
             <form class="auth-form" method="post" action="/crear-cuenta" enctype="application/x-www-form-urlencoded">
-                <!-- Escribe tus etiquetas (label) e inputs aquí -->
                 <h1>Crear cuenta</h1>
                 <div>
                     <label for="nombre">Nombre completo:</label>
@@ -56,8 +41,8 @@
                     <label for="rad_otro">Otro</label>
                 </div>
                 <div>
-                    <label for="subscripcion">Tipo de subscripción</label>
-                    <select id="subscripcion" name="subscripcion" required>
+                    <label for="suscripcion">Tipo de suscripción</label>
+                    <select id="suscripcion" name="suscripcion" required>
                         <option value="">---- Selecciona una opción ----</option>
                         <option value="gratis">Gratis(Con anuncios)</option>
                         <option value="premium_mensual">Premium Mensual ($99/mes)</option>
@@ -66,10 +51,10 @@
                 </div>
                 <div>
                     <label for="fecha_nacimiento">Fecha de nacimiento:</label>
-                    <input type="date" id="fecha_nacimiento" required>
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
                 </div>
                 <div>
-                    <input type="checkbox" id="terminos" value="aceptado" required>
+                    <input type="checkbox" id="terminos" name="terminos" value="aceptado" required>
                     <label for="terminos">Acepto los terminos y condiciones</label>
                 </div>
                 <div>
@@ -81,7 +66,7 @@
                     <button type="submit">Registrar</button>
                 </div>
             </form>
-            <p>¿Ya tienes cuenta? <a href="iniciar-sesion.html">Inicia sesión aqui</a></p>
+            <p>¿Ya tienes cuenta? <a th:href="@{/iniciar-sesion}">Inicia sesión aqui</a></p>
         </section>
     </main>
 

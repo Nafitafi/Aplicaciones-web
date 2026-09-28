@@ -4,7 +4,7 @@ public class Usuario {
     private String nombre;
     private String correo;
     private String contrasenia;
-    private String psuedonimo;
+    private String pseudonimo;
     private String genero;
     private String suscripcion;
     private String fechaNacimiento;
@@ -14,11 +14,11 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nombre, String correo, String contrasenia, String psuedonimo, String genero, String suscripcion, String fechaNacimiento, String terminos, String comentarios) {
+    public Usuario(String nombre, String correo, String contrasenia, String pseudonimo, String genero, String suscripcion, String fechaNacimiento, String terminos, String comentarios) {
         this.nombre = nombre;
         this.correo = correo;
         this.contrasenia = contrasenia;
-        this.psuedonimo = psuedonimo;
+        this.pseudonimo = pseudonimo;
         this.genero = genero;
         this.suscripcion = suscripcion;
         this.fechaNacimiento = fechaNacimiento;
@@ -50,12 +50,12 @@ public class Usuario {
         this.contrasenia = contrasenia;
     }
 
-    public String getPsuedonimo() {
-        return psuedonimo;
+    public String getPseudonimo() {
+        return pseudonimo;
     }
 
-    public void setPsuedonimo(String psuedonimo) {
-        this.psuedonimo = psuedonimo;
+    public void setPseudonimo(String pseudonimo) {
+        this.pseudonimo = pseudonimo;
     }
 
     public String getGenero() {
@@ -104,7 +104,7 @@ public class Usuario {
                 "nombre='" + nombre + '\'' +
                 ", correo='" + correo + '\'' +
                 ", contrasenia='" + contrasenia + '\'' +
-                ", psuedonimo='" + psuedonimo + '\'' +
+                ", pseudonimo='" + pseudonimo + '\'' +
                 ", genero='" + genero + '\'' +
                 ", suscripcion='" + suscripcion + '\'' +
                 ", fechaNacimiento='" + fechaNacimiento + '\'' +

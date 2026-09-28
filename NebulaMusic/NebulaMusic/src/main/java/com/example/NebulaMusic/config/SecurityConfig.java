@@ -16,11 +16,10 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/index", "/iniciar-sesion", "/registro").permitAll()
-                        .requestMatchers("/crear-cuenta", "/autenticar").permitAll()
-                        .requestMatchers("/static/**", "/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/", "/index", "/index.html", "/iniciar-sesion",
-                                "/iniciar-sesion.html", "/registro", "/registro.html").permitAll()
+                                "/iniciar-sesion.html", "/registro", "/registro.html",
+                                "/error", "/error.html", "/crear-cuenta", "/autenticar").permitAll()
+                        .requestMatchers("/styles/**", "/imgs/**").permitAll()
                         .anyRequest().authenticated()
                 );
         return http.build();
