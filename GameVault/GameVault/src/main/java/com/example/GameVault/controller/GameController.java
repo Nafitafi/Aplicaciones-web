@@ -1,5 +1,7 @@
 package com.example.GameVault.controller;
 
+import com.example.GameVault.service.JuegoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-//SOLO MANEJO DE PETICIONES NO NEGOCIO
+//SOLO MANEJO DE PETICIONES, NO NEGOCIO
 @Controller
 public class GameController {
-    private static List<Juego> juegosDb = new ArrayList<>();
     private static Long idCounter = 1L;
+
+    @Autowired
+    private JuegoService juegoService;
 
     @GetMapping("/fragments-demo")
     public String fragments(){
@@ -28,7 +32,7 @@ public class GameController {
 
     @GetMapping({"/", "/juegos"})
     public String juegos(Model model){
-        model.addAttribute("juegos", juegosDb);
+        model.addAttribute("juegos", this.juegoService.listarTodos());
         return "juegos";}
 
     @GetMapping("/juegos/nuevo")
@@ -40,6 +44,10 @@ public class GameController {
     public String guardarJuego(@RequestParam("titulo") String titulo,
                                @RequestParam("descripcion") String descripcion,
                                @RequestParam("portada") MultipartFile portada) {
+        Juego juego = new Juego();
+        juego.setTitulo(titulo);
+        juego.setDescripcion(descripcion);
+        this.juegoService.guardarJuego(juego, portada);
 
         // Redirigimos a la lista de juegos (Patrón PRG - Post/Redirect/Get)
         return "redirect:/juegos";
