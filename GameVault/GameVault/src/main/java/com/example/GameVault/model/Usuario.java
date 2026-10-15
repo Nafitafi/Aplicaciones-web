@@ -1,11 +1,9 @@
-package com.example.GameVault.repository;
+package com.example.GameVault.model;
 
-import com.example.GameVault.controller.Juego;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.engine.internal.Cascade;
 
 import java.util.List;
 
@@ -23,11 +21,11 @@ public class Usuario {
     @Column(nullable = false)
     private String nombre;
 
-    @Column(nullable = false, unique = true)
-    private String correo;
-
     @Column(nullable = false)
     private String contrasenia;
+
+    @Column(nullable = false, unique = true)
+    private String email;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Juego> juegos;

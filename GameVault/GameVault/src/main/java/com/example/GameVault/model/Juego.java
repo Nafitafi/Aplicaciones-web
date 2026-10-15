@@ -1,6 +1,5 @@
-package com.example.GameVault.controller;
+package com.example.GameVault.model;
 
-import com.example.GameVault.repository.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

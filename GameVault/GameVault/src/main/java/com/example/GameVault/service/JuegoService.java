@@ -2,8 +2,7 @@ package com.example.GameVault.service;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import com.example.GameVault.config.CloudinaryConfig;
-import com.example.GameVault.controller.Juego;
+import com.example.GameVault.model.Juego;
 import com.example.GameVault.repository.JuegoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -81,6 +80,14 @@ public class JuegoService {
             e.printStackTrace();
             return "default.png";
         }
+    }
+
+    public void eliminarJuego(Long id){
+        this.juegoRepository.deleteById(id);
+    }
+
+    public Juego buscarPorId(Long id){
+        return this.juegoRepository.findById(id).orElse(null);
     }
 
 }
