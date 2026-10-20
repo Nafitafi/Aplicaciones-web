@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" th:fragment="layout(title, content)">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="${title}">GameVault</title>
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
+</head>
+<body>
+
+    <nav>
+        <a href="/juegos" class="nav-brand">🎮 GameVault</a>
+        <div class="nav-links">
+            <a href="/juegos">Inicio (Catálogo)</a>
+            <a href="/fragments-demo" style="color: var(--success); margin-left:20px;">Fragmentos</a>
+
+            <!--/* Ocultar links NO es seguridad: el interceptor es quien protege las rutas. */-->
+            <th:block th:if="${session.usuario_id == null}">
+                <a href="/login" style="margin-left:20px;">Iniciar Sesión</a>
+                <a href="/registro">Registrarse</a>
+            </th:block>
+
+            <!--/* Usa ${session.x}; #session ya no existe en Thymeleaf 3.1. */-->
+            <th:block th:if="${session.usuario_id != null}">
+                <a href="/mis-juegos" style="color: var(--primary); margin-left:20px;">Mis Videojuegos</a>
+                <a href="/juegos/nuevo">Subir Juego</a>
+                <a href="/logout" style="color: var(--danger); margin-left:20px;">Cerrar Sesión</a>
+            </th:block>
+        </div>
+    </nav>
+
+    <main class="container" th:replace="${content}">
+        Contenido por defecto que sera reemplazado
+    </main>
+
+</body>
+</html>

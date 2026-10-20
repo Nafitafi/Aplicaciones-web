@@ -1,0 +1,71 @@
+# Compilation & Build Output
+target/
+build/
+out/
+bin/
+
+# Maven Wrapper
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# IDEs and Editors
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+/out/
+cmake-build-*/
+.navigation/
+
+### Visual Studio Code ###
+.vscode/
+*.code-workspace
+.history/
+
+### Eclipse ###
+.metadata/
+.classpath
+.project
+.settings/
+.factorypath
+.springBeans
+.sts4-cache
+.apt_generated/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Log Files & Crash Dumps
+*.log
+logs/
+err_pid*
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Miscellaneous
+HELP.md
+
