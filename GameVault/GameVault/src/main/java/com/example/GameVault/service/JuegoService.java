@@ -1,6 +1,8 @@
 package com.example.GameVault.service;
 
-import com.example.GameVault.controller.Juego;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import com.example.GameVault.model.Juego;
 import com.example.GameVault.repository.JuegoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 //Procesa reglas de negocio
@@ -18,6 +21,9 @@ import java.util.UUID;
 public class JuegoService {
     @Autowired
     private JuegoRepository juegoRepository;
+
+    @Autowired(required = false)
+    private Cloudinary cloudinary;
     private static final String UPLOAD_DIR="src/main/resources/static/uploads/";
 
     public List<Juego> listarTodos(){
@@ -29,7 +35,7 @@ public class JuegoService {
 
         // Verificamos si el archivo no está vacío
         if (!portada.isEmpty()) {
-            nombreArchivo =guardarImagenEnProyecto(portada);
+            nombreArchivo =guardarImagenCloudinary(portada);
         }
 
         juego.setPortadaUrl(nombreArchivo);
@@ -63,4 +69,25 @@ public class JuegoService {
             // En un proyecto real, manejaríamos esta excepción apropiadamente (ej. redirigir con error)
         }
     }
+    private String guardarImagenCloudinary(MultipartFile portada) {
+        try {
+            // Sube el archivo a Cloudinary
+            Map uploadResult = cloudinary.uploader().upload(portada.getBytes(), ObjectUtils.emptyMap());
+            // Obtiene la URL pública generada por Cloudinary
+            return uploadResult.get("secure_url").toString();
+        } catch (Exception e) {
+            System.err.println("Error al subir a Cloudinary. Revisa tus credenciales.");
+            e.printStackTrace();
+            return "default.png";
+        }
+    }
+
+    public void eliminarJuego(Long id){
+        this.juegoRepository.deleteById(id);
+    }
+
+    public Juego buscarPorId(Long id){
+        return this.juegoRepository.findById(id).orElse(null);
+    }
+
 }

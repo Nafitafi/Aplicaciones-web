@@ -1,4 +1,4 @@
-package com.example.GameVault.controller;
+package com.example.GameVault.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,4 +23,14 @@ public class Juego {
 
     @Column(name="portada_url")
     private String portadaUrl;
+
+    @Column
+    private Double precio;
+
+    @Column
+    private String categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 }
