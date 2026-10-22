@@ -37,4 +37,9 @@ public class RecursoController {
     public void eliminar(@PathVariable Long id){
         recursoService.eliminarRecurso(id);
     }
+
+    @GetMapping("/{id}")
+    public Recurso listarPorId(@PathVariable Long id){
+        return  recursoService.obtenerPorId(id).orElse(null);
+    }
 }

@@ -45,4 +45,8 @@ public class RecursoService {
         return recursoRepository.deleteById(id);
     }
 
+    public Optional<Recurso> obtenerPorId(Long id){
+        return recursoRepository.findById(id);
+    }
+
 }
