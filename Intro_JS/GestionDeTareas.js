@@ -44,7 +44,9 @@ y muestre en consola:
 - estado: "Completada" o "Pendiente"
 */
 function mostrarTareas(lista) {
+  // Se recorre la lista que entra como parámetro usando forEach
   lista.forEach(tarea => {
+    // Se usa un operador ternario para definir el string del estado basado en el booleano 
     const estado = tarea.completada ? 'Completada' : 'Pendiente';
     console.log(`Tarea: ${tarea.nombre}, Estado: ${estado}`);
   })
@@ -58,8 +60,8 @@ solo las tareas completadas.
 Usar filter.
 */
 const obtenerCompletadas = (lista) => {
-  const filtradas = tareas.filter(tarea => tarea.completada);
-  console.log(filtradas)
+  // Se filtra la lista recibida por parámetro manteniendo solo los objetos donde tarea.completada sea true
+  return lista.filter(tarea => tarea.completada);
 };
 
 
@@ -70,7 +72,8 @@ solo las tareas pendientes.
 Usar filter.
 */
 const obtenerPendientes = (lista) => {
-  
+ // Se filtra la lista recibida por parámetro manteniendo solo los objetos donde tarea.completada sea false
+  return lista.filter(tarea => !tarea.completada);
 };
 
 
@@ -81,7 +84,8 @@ solo los nombres de las tareas.
 Usar map.
 */
 const obtenerNombres = (lista) => {
-  
+  //Se usa map para solo extraer los nombres
+  return lista.map(tarea => tarea.nombre);
 };
 
 
@@ -91,7 +95,7 @@ Crear una función que retorne
 el total de tareas.
 */
 function contarTareas(lista) {
-  
+  return lista.length;
 }
 
 
@@ -112,15 +116,21 @@ const sistema = {
   tareas: tareas,
 
   mostrarTareas: function() {
-    
+    //Se usa el this. para referirse a la propiedad
+    mostrarTareas(this.tareas);
   },
 
   mostrarCompletadas: function() {
-    
+     // Se obtiene el arreglo filtrado invocando la función
+    const completadas = obtenerCompletadas(this.tareas);
+    // Se usa la función mostrarTareas para imprimir en consola de forma limpia el resultado filtrado
+    mostrarTareas(completadas);
   },
 
   mostrarPendientes: function() {
-    
+     const pendientes = obtenerPendientes(this.tareas);
+    // Se muestran en la consola las pendientes
+    mostrarTareas(pendientes);
   }
 };
 
@@ -138,7 +148,14 @@ TODO 7:
 - Si todas las tareas están completadas:
   mostrar "Todas las tareas completadas"
 */
-
+// Se comprueban si hay tareas
+if (tareas.length === 0) {
+  console.log("No hay tareas");
+} 
+// el .every se asegura que todo cumpla con la condición
+else if (tareas.every(tarea => tarea.completada)) {
+  console.log("Todas las tareas completadas");
+}
 
 // =====================================
 // 5. Switch
@@ -159,15 +176,18 @@ const opcion = 1;
 
 switch (opcion) {
   case 1:
-    
+    console.log("Todas las tareas: ")
+    sistema.mostrarTareas();
     break;
 
   case 2:
-    
+    console.log("Tareas completadas: ")
+    sistema.mostrarCompletadas();
     break;
 
   case 3:
-    
+    console.log("Tareas pendientes: ")
+    sistema.mostrarPendientes();
     break;
 
   default:
@@ -185,3 +205,15 @@ TODO 9:
 Llamar funciones para comprobar que todo funciona correctamente.
 Usar console.log donde sea necesario.
 */
+
+// Prueba de conteo de tareas
+console.log(`Total de tareas registradas: ${contarTareas(tareas)}`);
+
+// Prueba de obtención de nombres de tareas
+console.log("Nombres de todas las tareas:", obtenerNombres(tareas));
+
+// Prueba de simulación de condicionales con un arreglo vacío
+const listaVacia = [];
+if (listaVacia.length === 0) {
+  console.log("No hay tareas");
+}
