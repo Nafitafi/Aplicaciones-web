@@ -23,6 +23,7 @@ export const dashboard = {
      */
     async init() {
         // TODO: 1. Configurar los escuchadores de eventos llamando a setupEventListeners()
+        this.setupEventListeners()
         // TODO: 2. Cargar los personajes iniciales llamando a loadCharacters()
         await this.loadCharacters()
         // TODO: 3. Renderizar los favoritos iniciales (si existen en el local storage) llamando a renderFavorites()
