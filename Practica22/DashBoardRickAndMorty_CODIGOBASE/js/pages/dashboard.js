@@ -48,6 +48,42 @@ export const dashboard = {
         // TODO: 4. Escuchar el evento 'click' en el botón de página siguiente (this.elements.nextBtn)
         //          - Si store.state.currentPage es menor que store.state.totalPages, sumarle 1.
         //          - Llamar a loadCharacters() y hacer scroll hacia arriba.
+        card.innerHTML = `
+                <div class="card-image-wrapper">
+                    <img src="${char.image}" alt="${char.name}" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <h3 class="character-name">${char.name}</h3>
+                    <div class="status-label status-${char.status.toLowerCase()}">
+                        <span class="status-indicator"></span>
+                        ${char.status}
+                    </div>
+                    <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${char.id}">
+                        <i data-lucide="star"></i>
+                        <span>${isFav ? 'En Favoritos' : "Añadir a Favoritos"}</span>
+                    </button>
+                </div>  
+            `;
+
+
+        let timeout;
+        this.elements.search.addEventListener('input', (e) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                store.state.filters.name = e.target.value.trim();
+                store.state.currentPage = 1;
+                //cargar los personajes filtrados
+                this.loadCharacters();
+            }, 500)
+        });
+
+
+        this.elements.filter.addEventListener('change', (e) => {
+            store.state.filters.status = e.target.value;
+            store.state.currentPage = 1;
+            this.loadCharacters();
+        });
+
     },
 
     /**
